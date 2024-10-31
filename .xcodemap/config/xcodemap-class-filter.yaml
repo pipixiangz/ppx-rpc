@@ -1,0 +1,16 @@
+autoDetectedPackages:
+- com.ppx.example.common.model
+- com.ppx.example.common.service
+- com.ppx.example.consumer
+- com.ppx.example.provider
+- com.ppx.ppxrpc.model
+- com.ppx.ppxrpc.proxy
+- com.ppx.ppxrpc.registry
+- com.ppx.ppxrpc.serializer
+- com.ppx.ppxrpc.server
+enableAutoDetect: true
+ignoreSameClassCall: null
+ignoreSamePackageCall: null
+includedPackagePrefixes: null
+includedParentClasses: null
+name: xcodemap-filter
