@@ -10,7 +10,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ppx</groupId>
-            <artifactId>ppx-rpc-easy</artifactId>
+            <artifactId>ppx-rpc-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
