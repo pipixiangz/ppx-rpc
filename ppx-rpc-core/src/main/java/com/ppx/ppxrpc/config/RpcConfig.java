@@ -56,7 +56,7 @@ public class RpcConfig {
     /**
      * 模拟调用
      */
-    // private boolean mock = false;
+    private boolean mock = false;
 
     /**
      * 注册中心配置

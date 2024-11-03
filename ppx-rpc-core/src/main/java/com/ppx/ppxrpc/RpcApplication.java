@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RpcApplication {
 
+    // 维护一个全局的配置对象
     private static volatile RpcConfig rpcConfig;
 
     /**
@@ -46,7 +47,7 @@ public class RpcApplication {
     }
 
     /**
-     * 获取配置
+     * 获取配置，支持双检锁单例模式
      *
      * @return
      */
