@@ -19,6 +19,7 @@ public class UserServiceProxy {
     public User getUser(User user) {
         // 指定序列化器
         Serializer serializer = new JdkSerializer();
+
         // 发请求
         RpcRequest rpcRequest = RpcRequest.builder()
                 .serviceName(UserService.class.getName())

@@ -1,5 +1,6 @@
 package com.ppx.ppxrpc.config;
 
+import com.ppx.ppxrpc.serializer.SerializerKeys;
 import lombok.Data;
 
 /**
@@ -36,7 +37,7 @@ public class RpcConfig {
     /**
      * 序列化器
      */
-    // private String serializer = SerializerKeys.JDK;
+    private String serializer = SerializerKeys.JDK;
 
     /**
      * 负载均衡器

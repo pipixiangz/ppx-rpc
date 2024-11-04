@@ -1,10 +1,12 @@
 package com.ppx.ppxrpc.server;
 
+import com.ppx.ppxrpc.RpcApplication;
 import com.ppx.ppxrpc.model.RpcRequest;
 import com.ppx.ppxrpc.model.RpcResponse;
 import com.ppx.ppxrpc.registry.LocalRegistry;
 import com.ppx.ppxrpc.serializer.JdkSerializer;
 import com.ppx.ppxrpc.serializer.Serializer;
+import com.ppx.ppxrpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -26,7 +28,11 @@ public class HttpServerHandler implements Handler<HttpServerRequest>  {
     @Override
     public void handle(HttpServerRequest request) {
         // 指定序列化器
-        final Serializer serializer = new JdkSerializer();
+        // final Serializer serializer = new JdkSerializer();
+
+        // 指定序列化器，“使用工厂 + 读取配置” 来获取实现类
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
+
         // 记录日志
         System.out.println("Received request: " + request.method() + " " + request.uri());
 

@@ -17,8 +17,8 @@ import com.ppx.ppxrpc.proxy.ServiceProxyFactory;
 public class ConsumerExample {
 
     public static void main(String[] args) {
-//        RpcConfig rpc = ConfigUtils.loadConfig(RpcConfig.class, "rpc");
-//        System.out.println(rpc);
+        //RpcConfig rpc = ConfigUtils.loadConfig(RpcConfig.class, "rpc");
+        //System.out.println(rpc);
         // 动态代理
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
 
