@@ -1,8 +1,11 @@
 package com.ppx.ppxrpc;
 
 import com.ppx.ppxrpc.config.ConfigUtils;
+import com.ppx.ppxrpc.config.RegistryConfig;
 import com.ppx.ppxrpc.config.RpcConfig;
 import com.ppx.ppxrpc.constant.RpcConstant;
+import com.ppx.ppxrpc.registry.Registry;
+import com.ppx.ppxrpc.registry.RegistryFactory;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -29,22 +32,13 @@ public class RpcApplication {
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
         log.info("rpc init, config = {}", newRpcConfig.toString());
+        // 注册中心初始化
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init, config = {}", registryConfig);
     }
 
-    /**
-     * 初始化
-     * 默认调用前面写好的 ConfigUtils 来加载配置
-     */
-    public static void init() {
-        RpcConfig newRpcConfig;
-        try {
-            newRpcConfig = ConfigUtils.loadConfig(RpcConfig.class, RpcConstant.DEFAULT_CONFIG_PREFIX);
-        } catch (Exception e) {
-            // 配置加载失败，使用默认值
-            newRpcConfig = new RpcConfig();
-        }
-        init(newRpcConfig);
-    }
 
     /**
      * 获取配置，支持双检锁单例模式
